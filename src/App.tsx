@@ -9,6 +9,8 @@ import DriverManagement from './pages/DriverManagement';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
 
+import Login from './pages/Login';
+
 function App() {
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -22,6 +24,7 @@ function App() {
             <Route path="/drivers" element={<DriverManagement />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Container>
       </Box>
