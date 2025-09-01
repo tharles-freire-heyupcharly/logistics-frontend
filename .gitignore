@@ -1,1 +1,10 @@
 node_modules
+
+.cache/
+build/
+dist/
+*.log
+*.tmp
+*.swp
+coverage/
+public/
