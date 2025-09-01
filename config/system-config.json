@@ -1,0 +1,138 @@
+{
+  "logistics_system_config": {
+    "metadata": {
+      "project_name": "Logistics Management System",
+      "version": "1.0.0",
+      "created_date": "2025-09-01",
+      "status": "production_ready"
+    },
+    "aws_infrastructure": {
+      "region": "us-east-1",
+      "cognito": {
+        "user_pool": {
+          "id": "us-east-1_H8k7tGm0O",
+          "name": "logistics-user-pool",
+          "client_id": "5kovmbaag1265p23tbbt6ljj8h",
+          "identity_pool_id": "us-east-1:e16ad6fc-f437-4ae6-85c7-194c50cd8109"
+        },
+        "authentication": {
+          "flow_type": "USER_SRP_AUTH",
+          "email_verification": true,
+          "password_policy": {
+            "min_length": 8,
+            "require_lowercase": true,
+            "require_uppercase": true,
+            "require_numbers": true,
+            "require_symbols": true
+          }
+        }
+      },
+      "api_gateway": {
+        "api_id": "unv0m2gbd3",
+        "name": "iot-api",
+        "base_url": "https://unv0m2gbd3.execute-api.us-east-1.amazonaws.com",
+        "stage": "dev",
+        "endpoints": [
+          {
+            "path": "/device",
+            "method": "POST",
+            "function": "map-packages"
+          }
+        ]
+      },
+      "lambda_functions": [
+        {
+          "name": "map-packages",
+          "runtime": "python3.9",
+          "handler": "lambda_function.lambda_handler"
+        },
+        {
+          "name": "calc-revenue",
+          "runtime": "python3.9",
+          "handler": "lambda_function.lambda_handler"
+        },
+        {
+          "name": "offer-delivery",
+          "runtime": "python3.9",
+          "handler": "lambda_function.lambda_handler"
+        },
+        {
+          "name": "assign-driver",
+          "runtime": "python3.9",
+          "handler": "lambda_function.lambda_handler"
+        },
+        {
+          "name": "send-notification",
+          "runtime": "python3.9",
+          "handler": "lambda_function.lambda_handler"
+        }
+      ],
+      "other_resources": {
+        "s3_bucket": "logistics-project-data-lake",
+        "kinesis_stream": "logistics-realtime-stream",
+        "iot_thing": "driver-device",
+        "location_tracker": "shipment-tracker",
+        "location_map": "shipment-map",
+        "glue_job": "sap-erp-extract"
+      }
+    },
+    "test_users": [
+      {
+        "username": "testuser",
+        "email": "testuser@logistics.com",
+        "password": "LogisticsPass123!",
+        "status": "active",
+        "email_verified": true,
+        "created_method": "terraform",
+        "purpose": "integration_testing"
+      }
+    ],
+    "frontend_config": {
+      "development": {
+        "url": "http://localhost:3000",
+        "port": 3000,
+        "build_command": "npm start"
+      },
+      "environment_variables": {
+        "REACT_APP_COGNITO_REGION": "us-east-1",
+        "REACT_APP_COGNITO_USER_POOL_ID": "us-east-1_H8k7tGm0O",
+        "REACT_APP_COGNITO_USER_POOL_CLIENT_ID": "5kovmbaag1265p23tbbt6ljj8h",
+        "REACT_APP_COGNITO_IDENTITY_POOL_ID": "us-east-1:e16ad6fc-f437-4ae6-85c7-194c50cd8109",
+        "REACT_APP_API_URL": "https://unv0m2gbd3.execute-api.us-east-1.amazonaws.com/dev",
+        "REACT_APP_COGNITO_REDIRECT_SIGN_IN": "http://localhost:3000/",
+        "REACT_APP_COGNITO_REDIRECT_SIGN_OUT": "http://localhost:3000/"
+      }
+    },
+    "deployment_commands": {
+      "backend": {
+        "directory": "/Users/tharles/heyupcharly/logistics/terraform",
+        "commands": [
+          "terraform init",
+          "terraform plan",
+          "terraform apply"
+        ]
+      },
+      "frontend": {
+        "directory": "/Users/tharles/heyupcharly/logistics-frontend",
+        "commands": [
+          "npm install",
+          "npm start"
+        ]
+      }
+    },
+    "authentication_features": [
+      "user_signin",
+      "user_signup", 
+      "email_confirmation",
+      "password_reset",
+      "resend_confirmation",
+      "protected_routes",
+      "jwt_token_management"
+    ],
+    "testing_endpoints": {
+      "frontend_login": "http://localhost:3000",
+      "api_health_check": "https://unv0m2gbd3.execute-api.us-east-1.amazonaws.com/dev/device",
+      "cognito_user_pool": "us-east-1_H8k7tGm0O"
+    }
+  }
+}
