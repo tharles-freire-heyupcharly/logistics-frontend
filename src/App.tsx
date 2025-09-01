@@ -8,7 +8,7 @@ import RouteManagement from './pages/RouteManagement';
 import DriverManagement from './pages/DriverManagement';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
-
+import APITesting from './pages/APITesting';
 import Login from './pages/Login';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
             <Route path="/drivers" element={<DriverManagement />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/api-testing" element={<APITesting />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Container>

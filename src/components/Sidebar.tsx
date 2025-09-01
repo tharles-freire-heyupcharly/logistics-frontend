@@ -15,6 +15,7 @@ import {
   People as PeopleIcon,
   Analytics as AnalyticsIcon,
   Settings as SettingsIcon,
+  Api as ApiIcon,
 } from '@mui/icons-material';
 
 const drawerWidth = 240;
@@ -29,6 +30,7 @@ const Sidebar: React.FC = () => {
     { text: 'Drivers', icon: <PeopleIcon />, path: '/drivers' },
     { text: 'Analytics', icon: <AnalyticsIcon />, path: '/analytics' },
     { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
+    { text: 'API Testing', icon: <ApiIcon />, path: '/api-testing' },
   ];
 
   return (
